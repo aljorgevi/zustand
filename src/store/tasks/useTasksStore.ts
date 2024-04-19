@@ -12,7 +12,6 @@ interface taskState {
 	updateTaskProgress: (id: string, status: TaskStatus) => void
 	onTaskDrop: (status: TaskStatus) => void
 	createTask: (title: string, status: TaskStatus) => void
-	getTotalNumberOfTasks: () => number
 }
 
 export const useTasksStore = create<taskState>()(
@@ -20,7 +19,6 @@ export const useTasksStore = create<taskState>()(
 		devtools(
 			persist(
 				(set, get) => ({
-					getTotalNumberOfTasks: () => Object.keys(get().tasks).length,
 					createTask: (title: string, status: TaskStatus) => {
 						const id = crypto.getRandomValues(new Uint32Array(1))[0].toString()
 						const newTask = { id, title, status }
