@@ -7,10 +7,12 @@ import {
 } from 'react-icons/io5'
 import { WhiteCard } from '../../components'
 import { useBearStore, usePersonStore } from '../../store'
+import { useTasksStore } from '../../store/tasks/useTasksStore'
 
 export const Dashboard = () => {
 	const totalBears = useBearStore(state => state.computed.totalBears)
 	const firstName = usePersonStore(state => state.firstName)
+	const getTotalNumberOfTasks = useTasksStore(state => state.getTotalNumberOfTasks)
 	return (
 		<>
 			<h1>Dashboard</h1>
@@ -33,7 +35,7 @@ export const Dashboard = () => {
 				<WhiteCard centered>
 					<IoListOutline size={50} className='text-indigo-600' />
 					<h2>Tareas</h2>
-					<p>Información</p>
+					{getTotalNumberOfTasks()}
 				</WhiteCard>
 
 				<WhiteCard centered>
