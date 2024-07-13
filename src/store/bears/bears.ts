@@ -1,3 +1,5 @@
+// This is a base for a zustand store, I'll use as Documentation for the zustand store
+
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 
